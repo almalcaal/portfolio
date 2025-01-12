@@ -1,6 +1,12 @@
 :root {
   --color-accent: #5eead4;
   --color-highlight: #e2e8f0;
+  --background-accent: rgba(45, 212, 191, 0.1);
+  --transition-duration-primary: 200ms;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 * {
@@ -132,7 +138,7 @@ section h2,
 .anchor-text {
   color: var(--color-highlight);
   text-decoration: none;
-  transition-duration: 200ms;
+  transition-duration: var(--transition-duration-primary);
 }
 
 .anchor-text:hover {
@@ -191,7 +197,7 @@ section h2,
 .tag {
   border-radius: 0.9rem;
   padding: 0.25rem 0.5rem;
-  background-color: rgba(45, 212, 191, 0.1);
+  background-color: var(--background-accent);
 }
 
 .tag p {
@@ -226,13 +232,13 @@ section h2,
   position: relative;
   color: var(--color-highlight);
   text-decoration: none;
-  transition-duration: 200ms;
+  transition-duration: var(--transition-duration-primary);
   /* needed so .project-archive-link::after will span only the necessary amount of space */
   margin-right: auto;
 }
 
 .project-archive-link span {
-  transition-duration: 200ms;
+  transition-duration: var(--transition-duration-primary);
 }
 
 .project-archive-link:hover span {
@@ -249,9 +255,38 @@ section h2,
   height: 1.5px;
   bottom: 0;
   background: transparent;
-  transition-duration: 200ms;
+  transition-duration: var(--transition-duration-primary);
 }
 
 .project-archive-link:hover::after {
   background: var(--color-accent);
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+footer p {
+  font-size: 0.9rem;
+}
+
+.scroll-to-top {
+  text-decoration: none;
+  color: var(--color-accent);
+  background: var(--background-accent);
+  padding: 0 0.75rem;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.scroll-to-top:hover {
+  opacity: 0.6;
+  transition: var(--transition-duration-primary);
 }
