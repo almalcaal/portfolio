@@ -87,6 +87,31 @@ header h3 {
   font-weight: 400;
 }
 
+nav {
+  display: none;
+}
+
+nav a {
+  font-size: 0.9rem;
+}
+
+.social-link-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-link {
+  font-size: 1.2rem;
+  color: inherit;
+  text-decoration: none;
+  transition-duration: var(--transition-duration-primary);
+}
+
+.social-link:hover {
+  color: var(--color-highlight);
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -99,8 +124,7 @@ section {
   gap: 2rem;
 }
 
-section h2,
-.experience-card h3 {
+section h2 {
   text-transform: uppercase;
   font-size: 1rem;
   font-weight: 500;
@@ -187,6 +211,10 @@ section h2,
   font-size: 1rem;
 }
 
+.anchor-icon {
+  padding-left: 0.5rem;
+}
+
 .tag-container {
   display: flex;
   flex-wrap: wrap;
@@ -212,7 +240,7 @@ section h2,
   aspect-ratio: 16 / 9;
   /* order 2 makes our selected tag come in the 2nd order, so, in this case, if there were 3 siblings [1, 2, 3] becomes [2, 1, 3] */
   order: 2;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
 }
 
 .project-image-container img {
@@ -289,4 +317,119 @@ footer p {
 .scroll-to-top:hover {
   opacity: 0.6;
   transition: var(--transition-duration-primary);
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 640px) {
+  .project-card,
+  .experience-card {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .card-column {
+    grid-column: span 3 / span 3;
+  }
+
+  .project-image-container {
+    order: 0;
+  }
+
+  header {
+    max-width: unset;
+  }
+
+  header h1 {
+    font-size: 3rem;
+  }
+
+  header h3 {
+    font-size: 1.4rem;
+  }
+
+  header p {
+    max-width: 280px;
+  }
+
+  .social-link-container {
+    gap: 1.5rem;
+  }
+
+  .social-link-container i {
+    font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 6rem;
+    /* used in conjunction with style in header, main { padding-top: 6rem; } to have a nice padding for the scrolling sticky behavior */
+    padding-top: 0;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    margin-left: auto;
+    /* there was a strange behavior with header taking up the entire height of the page preventing the sticky behavior, so here 100vh worked perfectly to fix */
+    height: 100vh;
+    padding-bottom: 6rem;
+  }
+
+  header h1 {
+    font-size: 3rem;
+  }
+
+  header h3 {
+    font-size: 1.4rem;
+  }
+
+  header p {
+    max-width: 280px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    /* flex 1 takes as much space as possible, being breedy */
+    flex: 1;
+  }
+
+  nav a {
+    font-size: 1rem;
+  }
+
+  .social-link-container {
+    gap: 1.5rem;
+  }
+
+  .social-link-container i {
+    font-size: 2rem;
+  }
+
+  header,
+  main {
+    /* used in conjunction with style in body { padding-top: 0; } to have a nice padding for the scrolling sticky behavior */
+    padding-top: 6rem;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  main {
+    margin-right: auto;
+  }
+
+  .sticky-header {
+    display: none;
+  }
+
+  footer {
+    grid-column: span 2 / span 2;
+    flex-direction: row;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
 }
